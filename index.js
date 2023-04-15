@@ -20,22 +20,23 @@ app.use( session({
     secret: 'SuperSecretPasswordForHirehub',
     resave: false,
     saveUninitialized:true,
-    cookie: { httpOnly:true },
-    maxAge: 1000*24*60*60,
-    expires: Date.now()+1000*24*60*60 
-     
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000 * 24 * 60 * 60,
+        expires: Date.now() + 1000 * 24 * 60 * 60
+    },
+
 }));
 
 // for passport set up
 let User=  require( './models/user-DB');
 app.use( passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy( User.authenticate ));
-
+passport.use(new localStrategy( User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.set('view-engine', 'ejs');
+app.set("view engine","ejs");
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 
@@ -47,9 +48,9 @@ app.use(function( req,res,next){
 //for using stactic files
 app.use(express.static(__dirname+'/public'));
 // landing page        
-app.get( '/' ,(req,res)=>{
-     res.render('landing.ejs');
-})
+// app.get( '/' ,(req,res)=>{
+//      res.render('landing');
+// })
 
 
 
@@ -67,6 +68,6 @@ app.use(userRoutes);
 // app.use(questionRoutes);
 
 // listen server
-app.listen( 3000, (req,res)=>{
+app.listen( 3000, ()=>{
     console.log('server is running at port 3000');
 })

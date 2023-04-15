@@ -26,5 +26,5 @@ let userSchema= new mongoose.Schema({
 // plugin of other library to perform something i data base is supported by mongoose using plugin
 mongoose.plugin(passportlocalmongoose);
 
-let user= mongoose.model( 'user' ,userSchema);
-module.exports=user;
+let User= mongoose.model( 'user' ,userSchema);
+module.exports=User;
