@@ -1,0 +1,25 @@
+<%- include('./partials/header.ejs') %>
+
+
+
+      <div class="row">
+        <div class="col-6 m-auto">
+         <form action="/users/<%=user._id%>?_method=PATCH"  method="post">
+          <h1>edit the  user :<%= user.name %> </h1>
+
+     
+             <div class="form-group mb-3">
+               <label for="name">User-Name</label>
+               <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>" >
+             </div>
+             <div class="form-group mb-3">
+               <label for="username">e-mail</label>
+               <input type="text" class="form-control" name="username" id="username" value="<%= user.username %>">
+             </div>
+             <div class="form-group mb-3">
+               <label for="password">Password</label>
+               <input type="text" class="form-control" name="password" id="password" >
+             </div>
+             <button type="submit" class="btn btn-primary ">Update the user</button>
+   
+      <%- include('./partials/footer.ejs') %>

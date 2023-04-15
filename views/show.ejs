@@ -1,0 +1,45 @@
+<%- include('./partials/header.ejs') %>
+
+<h3> The Required job is :</h3>
+<div>
+  Name: <h1> <%= jobFound.name %></h1>
+</div>
+<div class="row">
+  <div class="col-2">
+    <img class="img-fluid" src="<%= jobFound.image %>" alt="logo">
+  </div>
+</div>
+<div>
+  Address: <%= jobFound.address %>
+</div>
+<div>
+  CGPA : <%= jobFound.cgpa %>
+</div>
+
+<div>
+  Deadline:<%= jobFound.deadline %>
+</div>
+<div>
+  package :<%= jobFound.package %>
+</div>
+<div>
+  job -type :<%= jobFound.type %>
+</div>
+<a href="/jobs/<%=jobFound._id%>/apply" class="btn btn-info"> Apply</a>
+<% if (currentUser && currentUser.isAdmin) { %>
+<a class="btn btn-primary" href="/jobs/<%= jobFound._id %>/edit">edit</a>
+<form action="/jobs/<%= jobFound._id %>?_method=DELETE" method="post">
+  <button type="submit" class="btn btn-danger"> delete</button>
+</form>
+<% } %>
+
+
+
+<% if (currentUser && currentUser.isAdmin) { %>
+<h2>list of students have applied</h2>
+<% for( let student of jobFound.appliedUsers) { %>
+<div><%= student.username %></div>
+<% } %>
+<% } %>
+
+<%- include('./partials/footer.ejs') %>

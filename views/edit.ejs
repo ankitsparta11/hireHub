@@ -1,0 +1,45 @@
+<%- include('./partials/header.ejs') %>
+
+
+
+      <div class="row">
+        <div class="col-6 m-auto">
+         <form action="/jobs/<%=jobFound._id%>?_method=PATCH"  method="post">
+          <h1>edit the  job :<%= jobFound.name %> </h1>
+
+     
+             <div class="form-group mb-3">
+               <label for="name">Company Name</label>
+               <input type="text" class="form-control" id="name" name="name" value="<%= jobFound.name %>" >
+             </div>
+             <div class="form-group mb-3">
+               <label for="name">Company Location</label>
+               <input type="text" class="form-control" name="address" id="address" value="<%= jobFound.address %>">
+             </div>
+             <div class="form-group mb-3">
+               <label for="name">Company Logo</label>
+               <input type="text" class="form-control" name="image" id="image" value="<%= jobFound.image %>" >
+             </div>
+             <div class="form-group mb-3">
+              <label for="name">Package</label>
+              <input type="number" class="form-control" name="package" id="package" value="<%= jobFound.package %>" >
+            </div>
+            <div class="form-group mb-3">
+              <label for="name">Deadline</label>
+              <input type="date" class="form-control" name="deadline" id="deadline" value="<%= jobFound.deadline %>" >
+            </div>
+            <div class="form-group mb-3">
+              <label for="name">CGPA</label>
+              <input type="number" class="form-control" min="0" max="10" step=".01" name="cgpa" id="cgpa" value="<%= jobFound.cgpa %>" >
+            </div>
+            <div class="form-group mb-3">
+              <label for="name">Job  type</label>
+              <input type="text" class="form-control" name="type" id="type" value="<%= jobFound.type %>" >
+            </div>
+             <button type="submit" class="btn btn-primary ">Update the job</button>
+           </form>
+   
+        </div>
+   </div>
+   
+      <%- include('./partials/footer.ejs') %>

@@ -1,0 +1,24 @@
+
+<%- include('./partials/header.ejs') %>
+<div>
+  <form action="/jobs" method="get">
+    <input type="text" name="search">
+    <input type="submit" value="search">
+   </form>
+</div>
+
+
+      <h1> List of all jobs</h1>
+      <% for( let job of jobsFound){  %>
+        <div> <%=job.name%>   <a class="btn btn-success" href="/jobs/<%=job._id%>">more</a></div>
+      <%  }%>
+   <div>
+
+    <a class="btn btn-primary" href="/jobs/new">add a job</a>
+
+   </div>
+
+   
+<%- include('./partials/footer.ejs') %>
+
+

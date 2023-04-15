@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+
+
+<h2> List of all Notifications</h2>
+<% for( let notif of allNotifs){  %>
+  <div> <h5>* <%=notif.body%> , Author: <%= notif.author %> </h5> </div>
+  <form action="/notifications/:<%=notif._id%>?_method=DELETE" method="post">
+    <button type="submit" class="btn btn-danger"> delete</button>
+</form>
+<%  }%>
+
+<div>
+<a class="btn btn-primary" href="/notifications/new">add a notification</a>
+
+</div>
+
+
+<%- include('../partials/footer.ejs') %>
